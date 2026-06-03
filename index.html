@@ -3,254 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据库技术概览</title>
+    <title>人工智能（AI）技术</title>
     <style>
-        /* 全局样式重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: #0f172a;
+            color: #ffffff;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f9;
         }
 
-        /* 头部样式 */
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin-bottom: 0.5rem;
+        /* 导航栏 */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
         }
 
         nav ul {
+            display: flex;
+            justify-content: center;
             list-style: none;
         }
 
         nav ul li {
-            display: inline-block;
-            margin: 0 15px;
+            margin: 15px 25px;
         }
 
-        nav a {
-            color: #ecf0f1;
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #3498db;
+        nav ul li a:hover {
+            color: #38bdf8;
         }
 
-        /* 主体内容容器 */
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-
-        /* 章节样式 */
-        section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
-            color: #2980b9;
-            margin-bottom: 15px;
-            border-left: 5px solid #2980b9;
-            padding-left: 10px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* 列表样式 */
-        .feature-list {
-            list-style: square;
-            margin-left: 30px;
-        }
-
-        .feature-list li {
-            margin-bottom: 8px;
-        }
-
-        /* 数据库类型卡片布局 */
-        .db-types {
+        /* Hero区域 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        /* 通用Section */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #38bdf8;
+        }
+
+        /* 卡片 */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            flex: 1;
-            min-width: 250px;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            border-top: 4px solid #3498db;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border: 1px solid #334155;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
         }
 
         .card h3 {
-            margin-bottom: 10px;
-            color: #2c3e50;
+            margin-bottom: 15px;
+            color: #60a5fa;
         }
 
-        /* 表格样式 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        .card p {
+            color: #cbd5e1;
         }
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        /* 时间线 */
+        .timeline {
+            max-width: 900px;
+            margin: auto;
         }
 
-        th {
-            background-color: #34495e;
-            color: white;
+        .timeline-item {
+            background: #1e293b;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
+        .timeline-item h4 {
+            color: #38bdf8;
+            margin-bottom: 8px;
         }
 
-        /* 页脚样式 */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: #bdc3c7;
-            font-size: 0.9em;
-            margin-top: 20px;
+            padding: 30px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        @media(max-width:768px){
+            .hero-content h1{
+                font-size:2.6rem;
+            }
+
+            .hero-content p{
+                font-size:1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>数据库技术入门</h1>
-        <nav>
-            <ul>
-                <li><a href="#intro">简介</a></li>
-                <li><a href="#types">分类</a></li>
-                <li><a href="#comparison">对比</a></li>
-                <li><a href="#trends">趋势</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- 导航 -->
+    <nav>
+        <ul>
+            <li><a href="#about">AI简介</a></li>
+            <li><a href="#applications">应用领域</a></li>
+            <li><a href="#future">未来趋势</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        
-        <!-- 简介部分 -->
-        <section id="intro">
-            <h2>什么是数据库？</h2>
-            <p>数据库是“按照数据结构来组织、存储和管理数据的仓库”。它是一个长期存储在计算机内的、有组织的、可共享的、统一管理的大量数据的集合。</p>
-            <p>数据库技术是现代信息系统的核心组成部分，广泛应用于银行、电信、电商、社交媒体等各个领域。</p>
-            <ul class="feature-list">
-                <li><strong>数据持久化：</strong> 数据不会因程序结束或断电而丢失。</li>
-                <li><strong>数据共享：</strong> 多用户或多应用可以同时访问数据。</li>
-                <li><strong>数据独立性：</strong> 数据的定义和存储与应用程序分离。</li>
-            </ul>
-        </section>
+    <!-- 首页 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>人工智能 AI</h1>
+            <p>
+                人工智能（Artificial Intelligence）正在改变世界，
+                从智能助手到自动驾驶，从医疗诊断到科学研究，
+                AI正推动新一轮科技革命。
+            </p>
+            <a href="#about" class="btn">了解更多</a>
+        </div>
+    </section>
 
-        <!-- 分类部分 -->
-        <section id="types">
-            <h2>主要数据库分类</h2>
-            <div class="db-types">
-                <div class="card">
-                    <h3>关系型数据库 (RDBMS)</h3>
-                    <p>基于关系模型，使用表格来存储数据，通过SQL语言进行操作。</p>
-                    <p><strong>代表产品：</strong>MySQL, Oracle, PostgreSQL, SQL Server.</p>
-                </div>
-                <div class="card">
-                    <h3>非关系型数据库</h3>
-                    <p>不使用表格，设计灵活，适合处理大量非结构化数据或高并发场景。</p>
-                    <p><strong>代表产品：</strong>MongoDB (文档型), Redis (键值型), Cassandra.</p>
-                </div>
+    <!-- AI简介 -->
+    <section id="about">
+        <h2 class="section-title">什么是人工智能？</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>机器学习</h3>
+                <p>
+                    通过数据训练模型，使计算机能够自动发现规律并进行预测与决策。
+                </p>
             </div>
-        </section>
 
-        <!-- 对比表格部分 -->
-        <section id="comparison">
-            <h2>SQL vs NoSQL 对比</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>特性</th>
-                        <th>关系型数据库 (SQL)</th>
-                        <th>非关系型数据库</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>数据结构</td>
-                        <td>结构化（表、行、列）</td>
-                        <td>灵活（文档、键值、图等）</td>
-                    </tr>
-                    <tr>
-                        <td>查询语言</td>
-                        <td>SQL (标准化语言)</td>
-                        <td>多样化 (无标准，API查询)</td>
-                    </tr>
-                    <tr>
-                        <td>事务支持</td>
-                        <td>强一致性 (ACID)</td>
-                        <td>最终一致性 (BASE理论)</td>
-                    </tr>
-                    <tr>
-                        <td>扩展性</td>
-                        <td>垂直扩展（升级硬件）</td>
-                        <td>水平扩展（分布式集群）</td>
-                    </tr>
-                    <tr>
-                        <td>适用场景</td>
-                        <td>银行系统、ERP、复杂查询</td>
-                        <td>社交网络、大数据、实时日志</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <div class="card">
+                <h3>深度学习</h3>
+                <p>
+                    基于神经网络结构，能够处理图像识别、语音识别和自然语言理解等复杂任务。
+                </p>
+            </div>
 
-        <!-- 发展趋势部分 -->
-        <section id="trends">
-            <h2>技术发展趋势</h2>
-            <p>随着数据量的爆炸式增长，数据库技术也在不断演进：</p>
-            <ol class="feature-list">
-                <li><strong>云原生数据库：</strong> 如 Amazon Aurora、TiDB，具备存算分离架构，弹性伸缩能力极强。</li>
-                <li><strong>多模数据库：</strong> 单一数据库支持多种数据模型（如既支持SQL又支持JSON文档）。</li>
-                <li><strong>AI与数据库结合：</strong> 利用AI技术实现自动索引优化、故障诊断（Self-Driving Database）。</li>
-                <li><strong>时序数据库：</strong> 专为物联网监控设计，处理海量时间序列数据，如 InfluxDB。</li>
-            </ol>
-        </section>
+            <div class="card">
+                <h3>生成式AI</h3>
+                <p>
+                    能够生成文本、图片、视频、代码等内容，是当前AI发展的重要方向。
+                </p>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- 应用领域 -->
+    <section id="applications">
+        <h2 class="section-title">AI应用领域</h2>
 
+        <div class="card-container">
+            <div class="card">
+                <h3>🏥 医疗健康</h3>
+                <p>辅助诊断疾病、分析医学影像、加速药物研发。</p>
+            </div>
+
+            <div class="card">
+                <h3>🚗 自动驾驶</h3>
+                <p>利用计算机视觉和传感器技术实现智能驾驶。</p>
+            </div>
+
+            <div class="card">
+                <h3>💬 智能客服</h3>
+                <p>通过自然语言处理提供全天候自动化服务。</p>
+            </div>
+
+            <div class="card">
+                <h3>🎓 教育培训</h3>
+                <p>个性化学习推荐与智能教学辅助。</p>
+            </div>
+
+            <div class="card">
+                <h3>🏭 智能制造</h3>
+                <p>提升生产效率，实现设备预测性维护。</p>
+            </div>
+
+            <div class="card">
+                <h3>📈 金融科技</h3>
+                <p>风险控制、智能投顾、反欺诈分析等应用。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 未来趋势 -->
+    <section id="future">
+        <h2 class="section-title">AI未来发展趋势</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>2025+</h4>
+                <p>多模态AI将实现文本、语音、图像和视频的统一理解。</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>2026+</h4>
+                <p>AI Agent将具备更强的自主决策与任务执行能力。</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>2030+</h4>
+                <p>人工智能将深度融入社会基础设施和产业体系。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
     <footer>
-        <p>&copy; 2023 数据库技术静态演示页面 | Designed by GLM5</p>
+        <p>© 2026 AI Technology Showcase | 探索人工智能未来</p>
     </footer>
 
 </body>
