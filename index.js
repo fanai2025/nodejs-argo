@@ -1,6 +1,3 @@
-const express = require("express");
-const app = express();
-const axios = require("axios");
 const os = require('os');
 const fs = require("fs");
 const path = require("path");
